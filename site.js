@@ -1,12 +1,12 @@
 // Swarte Interactive — menu, scroll reveal, bouncing-ball scene
 (function(){
-  // studio intro video (home page, once per visit)
+  // studio intro video (home page, when arriving from outside the site)
   var intro=document.getElementById('intro');
   if(intro&&document.documentElement.classList.contains('intro-on')){
     var v=intro.querySelector('video'),skip=intro.querySelector('.intro-skip'),snd=intro.querySelector('.intro-sound'),done=false;
     var tall=window.innerHeight>window.innerWidth*1.1;
     v.src='intro/intro-'+(tall?'portrait':'landscape')+'.mp4';
-    function finish(){if(done)return;done=true;try{sessionStorage.setItem('swIntro','1')}catch(e){}
+    function finish(){if(done)return;done=true;
       intro.classList.add('out');try{v.pause()}catch(e){}
       setTimeout(function(){document.documentElement.classList.remove('intro-on');intro.remove()},700)}
     v.addEventListener('ended',finish);v.addEventListener('error',finish);
